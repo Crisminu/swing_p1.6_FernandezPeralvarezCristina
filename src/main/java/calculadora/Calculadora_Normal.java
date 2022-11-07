@@ -7,10 +7,11 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 
 
-public class Calculadora extends JFrame{
+public class Calculadora_Normal extends JFrame{
+
     private JPanel MainPanel;
     private JTextField texto;
-    private JButton ACButton;
+    private JButton MasMenosButton;
     private JButton button2;
     private JButton button1;
     private JButton button4;
@@ -33,23 +34,32 @@ public class Calculadora extends JFrame{
 
     double a,b, resultado;
     String op;
-    public Calculadora() {
+    public Calculadora_Normal() {
         setContentPane(this.MainPanel);
         setResizable(false);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-
+        pack();
+        setLocationRelativeTo(null);
+        setVisible(true);
         //Barra del menú
         JMenuBar jmb = new JMenuBar();
         JMenu menu = new JMenu("Calculadora");
         menu.setMnemonic(KeyEvent.VK_C);
 
         JMenuItem jmi1 = new JMenuItem("Calculadora normal");
-
+        JMenuItem jmi2 = new JMenuItem("Calculadora cientifica");
+        jmi1.setEnabled(false);
+        jmi2.addActionListener(e -> {
+            new Calculadora_Cientifica();
+            dispose();
+        });
         menu.add(jmi1);
+        menu.add(jmi2);
+
         jmb.add(menu);
         setJMenuBar(jmb);
 
-        ACButton.addActionListener(new ActionListener() {
+        MasMenosButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
@@ -72,81 +82,54 @@ public class Calculadora extends JFrame{
         a9Button.addActionListener(e -> texto.setText(texto.getText()+a9Button.getText()));
         a0Button.addActionListener(e -> texto.setText(texto.getText()+a0Button.getText()));
         a00Button.addActionListener(e -> texto.setText(texto.getText()+a00Button.getText()));
-        button20.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if(!texto.getText().contains(",")){
-                    texto.setText(texto.getText()+button20.getText());
-                }
+        button20.addActionListener(e -> {
+            if(!texto.getText().contains(",")){
+                texto.setText(texto.getText()+button20.getText());
             }
         });
-        button16.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                a = Double.parseDouble(texto.getText());
-                op = "+";
-                texto.setText("");
+        button16.addActionListener(e -> {
+            a = Double.parseDouble(texto.getText());
+            op = "+";
+            texto.setText("");
+        });
+        button2.addActionListener(e -> {
+            a = Double.parseDouble(texto.getText());
+            op = "-";
+            texto.setText("");
+        });
+        button1.addActionListener(e -> {
+            a = Double.parseDouble(texto.getText());
+            op = "*";
+            texto.setText("");
+        });
+        button4.addActionListener(e -> {
+            a = Double.parseDouble(texto.getText());
+            op = "/";
+            texto.setText("");
+        });
+        cButton.addActionListener(e -> {
+            String backspace = null;
+            if(texto.getText().length() >0){
+                StringBuilder strB = new StringBuilder(texto.getText());
+                strB.deleteCharAt(texto.getText().length() - 1);
+                backspace = String.valueOf(strB);
+                texto.setText(backspace);
             }
         });
-        button2.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                a = Double.parseDouble(texto.getText());
-                op = "-";
-                texto.setText("");
-            }
-        });
-        button1.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                a = Double.parseDouble(texto.getText());
-                op = "*";
-                texto.setText("");
-            }
-        });
-        button4.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                a = Double.parseDouble(texto.getText());
-                op = "/";
-                texto.setText("");
-            }
-        });
-        btnIgual.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
-        });
-        cButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String backspace = null;
-                if(texto.getText().length() >0){
-                    StringBuilder strB = new StringBuilder(texto.getText());
-                    strB.deleteCharAt(texto.getText().length() - 1);
-                    backspace = String.valueOf(strB);
-                    texto.setText(backspace);
-                }
-            }
-        });
-        btnIgual.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                b = Double.parseDouble(texto.getText());
-                if(op == "+"){
-                    resultado = a+b;
-                    texto.setText(String.valueOf(resultado));
-                } else if (op=="-") {
-                    resultado = a-b;
-                    texto.setText(String.valueOf(resultado));
-                } else if (op=="*") {
-                    resultado = a*b;
-                    texto.setText(String.valueOf(resultado));
-                } else if (op=="/") {
-                    resultado = a/b;
-                    texto.setText(String.valueOf(resultado));
-                }
+        btnIgual.addActionListener(e -> {
+            b = Double.parseDouble(texto.getText());
+            if(op == "+"){
+                resultado = a+b;
+                texto.setText(String.valueOf(resultado));
+            } else if (op=="-") {
+                resultado = a-b;
+                texto.setText(String.valueOf(resultado));
+            } else if (op=="*") {
+                resultado = a*b;
+                texto.setText(String.valueOf(resultado));
+            } else if (op=="/") {
+                resultado = a/b;
+                texto.setText(String.valueOf(resultado));
             }
         });
         pack();
@@ -154,16 +137,11 @@ public class Calculadora extends JFrame{
     }
 
     public static void main(String[] args) {
-        /*JFrame frame = new JFrame("Calculadora");
-        frame.setContentPane(new Calculadora().MainPanel);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);*/
         try {
             UIManager.setLookAndFeel(new NimbusLookAndFeel());
         } catch (UnsupportedLookAndFeelException e) {
             throw new RuntimeException(e);
         }
-        new Calculadora();
+        new Calculadora_Normal();
     }
 }
