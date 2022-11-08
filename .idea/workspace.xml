@@ -4,16 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="892b241e-3172-4ff1-a3f0-db1901dcae74" name="Changes" comment="">
+    <list default="true" id="892b241e-3172-4ff1-a3f0-db1901dcae74" name="Changes" comment="First Test">
+      <change afterPath="$PROJECT_DIR$/src/main/java/calculadora/Configuracion.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/calculadora/Configuracion.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/calculadora/Calculadora_Cientifica.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/calculadora/Calculadora_Cientifica.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/calculadora/Calculadora_Cientifica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/calculadora/Calculadora_Cientifica.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/calculadora/Calculadora_Normal.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/calculadora/Calculadora_Normal.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/calculadora/Calculadora_Normal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/calculadora/Calculadora_Normal.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/calculadora/Fotos.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/calculadora/Fotos.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/calculadora/Fotos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/calculadora/Fotos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/calculadora/Utilidades.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/calculadora/Utilidades.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/calculadora/Utilidades.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/calculadora/Utilidades.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -43,18 +43,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;UI_DESIGNER_EDITOR_MODE.PaletteManager.WIDTH&quot;: &quot;156&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/crist/IdeaProjects/swing_p1.6_FernandezPeralvarezCristina/src/main/java/test7&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "UI_DESIGNER_EDITOR_MODE.PaletteManager.WIDTH": "33",
+    "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH": "353",
+    "last_opened_file_path": "C:/Users/crist/IdeaProjects/swing_p1.6_FernandezPeralvarezCristina/src/main/java/test7",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\crist\IdeaProjects\swing_p1.6_FernandezPeralvarezCristina\src\main\java\test7" />
@@ -108,6 +109,14 @@
       <option name="presentableId" value="Default" />
       <updated>1666638964947</updated>
     </task>
+    <task id="LOCAL-00001" summary="First Test">
+      <created>1667845880659</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1667845880659</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -120,5 +129,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="First Test" />
+    <option name="LAST_COMMIT_MESSAGE" value="First Test" />
   </component>
 </project>

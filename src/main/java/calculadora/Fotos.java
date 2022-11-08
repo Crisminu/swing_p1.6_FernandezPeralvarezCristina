@@ -2,44 +2,52 @@ package calculadora;
 
 import javax.swing.*;
 import javax.swing.plaf.nimbus.NimbusLookAndFeel;
-import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.io.File;
+import java.io.FileFilter;
 
-public class Fotos extends JFrame{
+public class Fotos extends JFrame implements Runnable {
 
     private JPanel panelMain;
     private JLabel label1;
     private ImageIcon img;
     private Icon icono;
 
+    boolean jpg = false;
+    boolean png = false;
+    String ruta = "src/main/resources/Fotos";
+    int segundos = 0;
 
-    public Fotos() throws InterruptedException{
+
+    File file;
+    File[] files;
+
+
+    public Fotos() throws InterruptedException {
         super("Galería");
         setResizable(false);
 
         JMenuBar jmb = new JMenuBar();
         JMenu fotos = new JMenu("Fotos");
 
+        file = new File(ruta);
+        files = file.listFiles(getFileFilter(png,jpg));
+
         fotos.setMnemonic(KeyEvent.VK_F);
-        JMenuItem jmi1 = new JMenuItem("Abrir");
-        jmi1.setMnemonic(KeyEvent.VK_A);
+        JMenuItem jmi1 = new JMenuItem("Configuración");
+        jmi1.setMnemonic(KeyEvent.VK_C);
         jmi1.addActionListener(e ->{
-            JFileChooser jfile = new JFileChooser();
-            int resultado = jfile.showOpenDialog(this);
-
-            if(resultado != JFileChooser.CANCEL_OPTION){
-                File fileName = jfile.getSelectedFile();
-                this.mostrarImg(label1,fileName.getAbsolutePath());
-            }
-
+            new Configuracion(png, jpg, ruta, segundos);
+            file = new File(ruta);
+            files = file.listFiles(getFileFilter(png,jpg));
+            System.out.println(files.length);
         });
         JMenuItem jme = new JMenuItem("Salir");
         jme.setMnemonic(KeyEvent.VK_S);
-        jme.addActionListener(e ->{
+        jme.addActionListener(e -> {
             dispose();
-            new Utilidades();
         });
+
 
         fotos.add(jmi1);
         fotos.add(jme);
@@ -56,6 +64,7 @@ public class Fotos extends JFrame{
 
 
     }
+
     public static void main(String[] args) throws InterruptedException {
         try {
             UIManager.setLookAndFeel(new NimbusLookAndFeel());
@@ -63,15 +72,46 @@ public class Fotos extends JFrame{
             throw new RuntimeException(e);
         }
     }
-    public void mostrarImg(JLabel label1, String ruta){
-        label1.setIcon(null);
-        this.img = new ImageIcon(ruta);
-        this.icono = new ImageIcon(
-               this.img.getImage().getScaledInstance(
-                       label1.getWidth(),label1.getHeight(), Image.SCALE_DEFAULT)
-        );
-        label1.setIcon(this.icono);
-        this.repaint();
-
+    private FileFilter getFileFilter(boolean png, boolean jpg) {
+        return pathname -> {
+            if (pathname.getName().endsWith(".png")) {
+                return png;
+            }
+            else if (pathname.getName().endsWith(".jpg")) {
+                return  jpg;
+            }
+            return false;
+        };
     }
+    @Override
+    public void run() {
+        for (File file : files) {
+            if (file.getAbsolutePath().endsWith(".jpg")) {
+                this.img = new ImageIcon(file.getAbsolutePath());
+                this.icono = new ImageIcon(
+                        this.img.getImage().getScaledInstance(640,480,0)
+                );
+                label1.setIcon(this.icono);
+                this.repaint();
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }if (file.getAbsolutePath().endsWith(".png")) {
+                this.img = new ImageIcon(file.getAbsolutePath());
+                this.icono = new ImageIcon(
+                        this.img.getImage().getScaledInstance(640,480,0)
+                );
+                label1.setIcon(this.icono);
+                this.repaint();
+                try {
+                    Thread.sleep(segundos*1000);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+    }
+
 }

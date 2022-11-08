@@ -51,7 +51,8 @@ public class Utilidades extends JFrame {
         });
         jmi2.addActionListener(e ->{
             try {
-                new Fotos();
+                Thread fotos = new Thread(new Fotos());
+                fotos.start();
             } catch (InterruptedException ex) {
                 throw new RuntimeException(ex);
             }

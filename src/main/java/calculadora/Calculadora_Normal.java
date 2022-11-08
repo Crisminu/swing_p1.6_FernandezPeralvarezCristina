@@ -11,7 +11,6 @@ public class Calculadora_Normal extends JFrame{
 
     private JPanel MainPanel;
     private JTextField texto;
-    private JButton MasMenosButton;
     private JButton button2;
     private JButton button1;
     private JButton button4;
@@ -20,7 +19,6 @@ public class Calculadora_Normal extends JFrame{
     private JButton a7Button;
     private JButton a4Button;
     private JButton a1Button;
-    private JButton a00Button;
     private JButton cButton;
     private JButton a8Button;
     private JButton a5Button;
@@ -59,12 +57,6 @@ public class Calculadora_Normal extends JFrame{
         jmb.add(menu);
         setJMenuBar(jmb);
 
-        MasMenosButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
-        });
         cButton2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -81,7 +73,6 @@ public class Calculadora_Normal extends JFrame{
         a8Button.addActionListener(e -> texto.setText(texto.getText()+a8Button.getText()));
         a9Button.addActionListener(e -> texto.setText(texto.getText()+a9Button.getText()));
         a0Button.addActionListener(e -> texto.setText(texto.getText()+a0Button.getText()));
-        a00Button.addActionListener(e -> texto.setText(texto.getText()+a00Button.getText()));
         button20.addActionListener(e -> {
             if(!texto.getText().contains(",")){
                 texto.setText(texto.getText()+button20.getText());

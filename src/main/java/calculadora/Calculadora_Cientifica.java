@@ -5,7 +5,6 @@ import javax.swing.plaf.nimbus.NimbusLookAndFeel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-import java.lang.Integer;
 
 
 public class Calculadora_Cientifica extends JFrame{
@@ -31,12 +30,7 @@ public class Calculadora_Cientifica extends JFrame{
     private JButton a6Button;
     private JButton a3Button;
     private JButton button20;
-    private JButton MasMenosButton;
-    private JButton HEXButton;
-    private JButton DECButton;
-    private JButton OCTButton;
-    private JButton BINButton;
-    private JTextField txtHEX;
+    private JTextField txtDEC;
     private JButton ABtn;
     private JButton BBtn;
     private JButton CBtn;
@@ -45,9 +39,15 @@ public class Calculadora_Cientifica extends JFrame{
     private JButton FBtn;
     private JButton Par1Button;
     private JButton Par2Button;
-    private JTextField txtDEC;
+    private JTextField txtHexa;
     private JTextField txtOCT;
     private JTextField txtBIN;
+    private JRadioButton decimalRadioButton;
+    private JRadioButton hexadecimalRadioButton;
+    private JRadioButton octalRadioButton;
+    private JRadioButton binarioRadioButton;
+
+    String sisNum;
 
     double a,b, resultado;
     String op;
@@ -59,6 +59,24 @@ public class Calculadora_Cientifica extends JFrame{
         setLocationRelativeTo(null);
         setVisible(true);
 
+        decimalRadioButton.setSelected(true);
+        ABtn.setEnabled(false);
+        BBtn.setEnabled(false);
+        CBtn.setEnabled(false);
+        DBtn.setEnabled(false);
+        EBtn.setEnabled(false);
+        FBtn.setEnabled(false);
+        a1Button.setEnabled(true);
+        a2Button.setEnabled(true);
+        a3Button.setEnabled(true);
+        a4Button.setEnabled(true);
+        a5Button.setEnabled(true);
+        a6Button.setEnabled(true);
+        a7Button.setEnabled(true);
+        a8Button.setEnabled(true);
+        a9Button.setEnabled(true);
+        a0Button.setEnabled(true);
+        sisNum = "decimal";
         //Barra del menú
         JMenuBar jmb = new JMenuBar();
         JMenu menu = new JMenu("Calculadora");
@@ -133,67 +151,137 @@ public class Calculadora_Cientifica extends JFrame{
                 texto.setText(backspace);
             }
         });
+
         btnIgual.addActionListener(e -> {
-            b = Double.parseDouble(texto.getText());
-            if(op == "+"){
-                resultado = a+b;
-                texto.setText(String.valueOf(resultado));
-            } else if (op=="-") {
-                resultado = a-b;
-                texto.setText(String.valueOf(resultado));
-            } else if (op=="*") {
-                resultado = a*b;
-                texto.setText(String.valueOf(resultado));
-            } else if (op=="/") {
-                resultado = a/b;
-                texto.setText(String.valueOf(resultado));
+            if(sisNum.equalsIgnoreCase("decimal")){
+                int num = Integer.parseInt(texto.getText());
+                txtDEC.setText(String.valueOf(num));
+                txtHexa.setText(Integer.toHexString(num));
+                txtOCT.setText(Integer.toOctalString(num));
+                txtBIN.setText(Integer.toBinaryString(num));
+            }else if(sisNum.equalsIgnoreCase("hexadecimal")){
+                txtDEC.setText(String.valueOf(convertirHexadecimalDecimal(texto.getText())));
+                txtHexa.setText(texto.getText());
+                int num= convertirHexadecimalDecimal(texto.getText());
+                txtOCT.setText(Integer.toOctalString(num));
+                txtBIN.setText(Integer.toBinaryString(num));
+            }else if(sisNum.equalsIgnoreCase("octal")){
+                txtDEC.setText(String.valueOf(octalADecimal(Integer.parseInt(texto.getText()))));
+                int num = octalADecimal(Integer.parseInt(texto.getText()));
+                txtHexa.setText(Integer.toHexString(num));
+                txtOCT.setText(texto.getText());
+                txtBIN.setText(Integer.toBinaryString(num));
+            }else if(sisNum.equalsIgnoreCase("binario")){
+                txtDEC.setText(String.valueOf(binarioADecimal(Integer.parseInt(texto.getText()))));
+                int num = binarioADecimal(Integer.parseInt(texto.getText()));
+                txtHexa.setText(Integer.toHexString(num));
+                txtOCT.setText(Integer.toOctalString(num));
+                txtBIN.setText(texto.getText());
             }
+
+
         });
         pack();
         setVisible(true);
 
-
-        DECButton.addActionListener(new ActionListener() {
+        ButtonGroup group = new ButtonGroup();
+        group.add(decimalRadioButton);
+        group.add(hexadecimalRadioButton);
+        group.add(octalRadioButton);
+        group.add(binarioRadioButton);
+        ActionListener listener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                String base = e.getActionCommand();
+                switch(base){
+                    case "Decimal":
+                        ABtn.setEnabled(false);
+                        BBtn.setEnabled(false);
+                        CBtn.setEnabled(false);
+                        DBtn.setEnabled(false);
+                        EBtn.setEnabled(false);
+                        FBtn.setEnabled(false);
+                        a1Button.setEnabled(true);
+                        a2Button.setEnabled(true);
+                        a3Button.setEnabled(true);
+                        a4Button.setEnabled(true);
+                        a5Button.setEnabled(true);
+                        a6Button.setEnabled(true);
+                        a7Button.setEnabled(true);
+                        a8Button.setEnabled(true);
+                        a9Button.setEnabled(true);
+                        a0Button.setEnabled(true);
+                        sisNum = "decimal";
+                        break;
 
-                    String n = String.valueOf(texto.getText());
-                    txtDEC.setText(n);
-                    txtHEX.setText(Integer.toHexString(Integer.parseInt(n)).toUpperCase());
-                    txtOCT.setText(Integer.toOctalString(Integer.parseInt(n)).toUpperCase());
-                    txtBIN.setText(Integer.toBinaryString(Integer.parseInt(n)).toUpperCase());
+
+                    case "Hexadecimal":
+                        ABtn.setEnabled(true);
+                        BBtn.setEnabled(true);
+                        CBtn.setEnabled(true);
+                        DBtn.setEnabled(true);
+                        EBtn.setEnabled(true);
+                        FBtn.setEnabled(true);
+                        a1Button.setEnabled(true);
+                        a2Button.setEnabled(true);
+                        a3Button.setEnabled(true);
+                        a4Button.setEnabled(true);
+                        a5Button.setEnabled(true);
+                        a6Button.setEnabled(true);
+                        a7Button.setEnabled(true);
+                        a8Button.setEnabled(true);
+                        a9Button.setEnabled(true);
+                        a0Button.setEnabled(true);
+                        sisNum = "hexadecimal";
+                    break;
+                    case "Octal":
+                        ABtn.setEnabled(false);
+                        BBtn.setEnabled(false);
+                        CBtn.setEnabled(false);
+                        DBtn.setEnabled(false);
+                        EBtn.setEnabled(false);
+                        FBtn.setEnabled(false);
+                        a1Button.setEnabled(true);
+                        a2Button.setEnabled(true);
+                        a3Button.setEnabled(true);
+                        a4Button.setEnabled(true);
+                        a5Button.setEnabled(true);
+                        a6Button.setEnabled(true);
+                        a7Button.setEnabled(true);
+                        a8Button.setEnabled(false);
+                        a9Button.setEnabled(false);
+                        a0Button.setEnabled(true);
+                        sisNum = "octal";
+                        break;
+
+                    case "Binario":
+                        ABtn.setEnabled(false);
+                        BBtn.setEnabled(false);
+                        CBtn.setEnabled(false);
+                        DBtn.setEnabled(false);
+                        EBtn.setEnabled(false);
+                        FBtn.setEnabled(false);
+                        a1Button.setEnabled(true);
+                        a2Button.setEnabled(false);
+                        a3Button.setEnabled(false);
+                        a4Button.setEnabled(false);
+                        a5Button.setEnabled(false);
+                        a6Button.setEnabled(false);
+                        a7Button.setEnabled(false);
+                        a8Button.setEnabled(false);
+                        a9Button.setEnabled(false);
+                        a0Button.setEnabled(true);
+                        sisNum = "binario";
+                        break;
+
+
                 }
-
-        });
-        HEXButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String n = String.valueOf(texto.getText());
-                txtHEX.setText(n);
-                txtOCT.setText(Integer.toOctalString(Integer.parseInt(n)).toUpperCase());
-                txtBIN.setText(Integer.toBinaryString(Integer.parseInt(n)).toUpperCase());
             }
-        });
-        OCTButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String n = String.valueOf(texto.getText());
-
-                txtHEX.setText(Integer.toHexString(Integer.parseInt(n)).toUpperCase());
-                txtOCT.setText(n);
-                txtBIN.setText(Integer.toBinaryString(Integer.parseInt(n)).toUpperCase());
-            }
-        });
-        BINButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String n = String.valueOf(texto.getText());
-
-                txtHEX.setText(Integer.toHexString(Integer.parseInt(n)).toUpperCase());
-                txtOCT.setText(Integer.toOctalString(Integer.parseInt(n)).toUpperCase());
-                txtBIN.setText(n);
-            }
-        });
+        };
+        decimalRadioButton.addActionListener(listener);
+        hexadecimalRadioButton.addActionListener(listener);
+        octalRadioButton.addActionListener(listener);
+        binarioRadioButton.addActionListener(listener);
     }
 
     public static void main(String[] args) {
@@ -203,6 +291,52 @@ public class Calculadora_Cientifica extends JFrame{
             throw new RuntimeException(e);
         }
         new Calculadora_Cientifica();
+    }
+    //CONVERSORES OTRAS BASES A DECIMAL
+    public static int convertirHexadecimalDecimal(String num){
+        final String DIGITOS = "0123456789ABCDEF";
+        num = num.toUpperCase();
+
+        int decimal = 0;
+
+        for (int i = 0; i < num.length(); i++){
+            char caracter = num.charAt(i);
+            int digito = DIGITOS.indexOf(caracter);
+            decimal = 16 * decimal + digito;
+        }
+        return decimal;
+    }
+    public static int binarioADecimal(int binario) {
+        int decimal = 0;
+        int potencia = 0;
+        // Ciclo infinito hasta que binario sea 0
+        while (true) {
+            if (binario == 0) {
+                break;
+            } else {
+                int temp = binario % 10;
+                decimal += temp * Math.pow(2, potencia);
+                binario = binario / 10;
+                potencia++;
+            }
+        }
+        return decimal;
+    }
+    public static int octalADecimal(int octal) {
+        int decimal = 0;
+        int potencia = 0;
+        // Ciclo infinito que se rompe cuando octal es 0
+        while (true) {
+            if (octal == 0) {
+                break;
+            } else {
+                int temp = octal % 10;
+                decimal += temp * Math.pow(8, potencia);
+                octal = octal / 10;
+                potencia++;
+            }
+        }
+        return decimal;
     }
 
 }
