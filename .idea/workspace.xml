@@ -4,17 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="892b241e-3172-4ff1-a3f0-db1901dcae74" name="Changes" comment="First Test">
-      <change afterPath="$PROJECT_DIR$/src/main/java/calculadora/Configuracion.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/calculadora/Configuracion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/calculadora/Calculadora_Cientifica.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/calculadora/Calculadora_Cientifica.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/calculadora/Calculadora_Cientifica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/calculadora/Calculadora_Cientifica.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/calculadora/Calculadora_Normal.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/calculadora/Calculadora_Normal.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/calculadora/Calculadora_Normal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/calculadora/Calculadora_Normal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/calculadora/Fotos.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/calculadora/Fotos.form" afterDir="false" />
+    <list default="true" id="892b241e-3172-4ff1-a3f0-db1901dcae74" name="Changes" comment="Second Test">
       <change beforePath="$PROJECT_DIR$/src/main/java/calculadora/Fotos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/calculadora/Fotos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/calculadora/Utilidades.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/calculadora/Utilidades.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,7 +107,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667845880659</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Second Test">
+      <created>1667923729667</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1667923729667</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -132,6 +130,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="First Test" />
-    <option name="LAST_COMMIT_MESSAGE" value="First Test" />
+    <MESSAGE value="Second Test" />
+    <option name="LAST_COMMIT_MESSAGE" value="Second Test" />
   </component>
 </project>

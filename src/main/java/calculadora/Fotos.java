@@ -94,7 +94,7 @@ public class Fotos extends JFrame implements Runnable {
                 label1.setIcon(this.icono);
                 this.repaint();
                 try {
-                    Thread.sleep(2000);
+                    Thread.sleep(segundos*1000);
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
